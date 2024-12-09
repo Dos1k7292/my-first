@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="LX.css">
+    <title>Lexus - Көлік әлемінің шыңы</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(90deg, #000, #333);
+            color: #ffffff;
+            padding: 20px 10px;
+            text-align: center;
+        }
+        header img {
+            height: 70px;
+        }
+        nav {
+            background-color: #111;
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #f0c040;
+        }
+        .hero {
+
+            text-align: center;
+            padding: 50px 20px;
+            background: center/cover no-repeat;
+            color: #663737;
+        }
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .categories {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 30px auto;
+            max-width: 1200px;
+        }
+        .category {
+            background: #fff;
+            padding: 20px;
+            margin: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 30%;
+            opacity: 0.5;
+            transition: transform 0.3s, box-shadow 0.3s;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .category:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            opacity: 1;
+        }
+        .category img {
+            width: 100%;
+            height: 150px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+        .category h3 {
+            margin: 15px 0;
+        }
+        .map-container {
+            display: flex;
+            justify-content: center;
+            margin: 40px auto;
+            padding: 20px;
+            max-width: 1200px;
+        }
+        
+        .slider {
+            position: relative;
+            width: 80%;
+            max-width: 600px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slides img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 10;
+            font-size: 18px;
+        }
+
+        .slider-btn:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+        .a {
+            background: linear-gradient(90deg, #000, #333);
+            padding: 40px;
+            text-align: center;
+            color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .a h2 {
+            font-size: 24px;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+        
+        .b {
+            display: flex;
+            background: linear-gradient(90deg, #2a2a2a, #555);
+            border: 1px solid #333;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            align-items: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .b:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        
+        .b img {
+            width: 150px;
+            height: auto;
+            margin-right: 20px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+        
+        .c {
+            text-align: left;
+            flex: 1;
+            color: #fff;
+        }
+        
+        .c h3 {
+            margin: 0;
+            font-size: 22px;
+            font-weight: bold;
+            color: #ff6600;
+        }
+        
+        .c p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-top: 10px;
+            color: #ccc;
+        }
+        
+        .map-container iframe {
+            border: 0;
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+.slider-section {
+    text-align: center;
+    padding: 50px 0;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    margin: 0 auto;
+}
+
+.slider-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+
+.slider {
+    display: flex;
+    animation: slideAnimation 20s infinite;
+}
+
+
+.slide {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+@keyframes slideAnimation {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-100%); }
+    40% { transform: translateX(-200%); }
+    60% { transform: translateX(-300%); }
+    80% { transform: translateX(-400%); }
+    100% { transform: translateX(-500%); }
+}
+
+
+
+        footer {
+            background-color: #111;
+            color: #fff;
+            text-align: center;
+            padding: 20px 10px;
+            margin-top: 40px;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .footer-links div {
+            width: 30%;
+            text-align: left;
+        }
+        .footer-links div h4 {
+            margin-bottom: 10px;
+            color: #ebebeb;
+        }
+        .footer-links div p {
+            color: #ebebeb;
+        }
+        
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown a {
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            padding: 10px;
+            display: block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 150px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            padding: 8px 12px;
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .menu-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #111;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            z-index: 1000;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .menu-button:hover {
+            background-color: #444;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            z-index: 999;
+        }
+
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #f0c040;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            color: #fff;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 30px;
+            margin-left: 50px;
+            color: #f0c040;
+            cursor: pointer;
+        }
+
+        body.active .sidebar {
+            width: 0;
+        }
+
+        body.active .menu-button {
+            display: none;
+        }
+
+        body.active .close-btn {
+            display: none;
+        }
+
+
+
+        .share-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #000000;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgb(255, 130, 240);
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 10px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .share-menu {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background: rgb(255, 255, 255);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            display: none;
+            z-index: 10;
+        }
+
+        .share-menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .share-menu ul li {
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .share-menu ul li:last-child {
+            border-bottom: none;
+        }
+
+        .share-menu ul li:hover {
+            background-color: #f0f0f0;
+        }
+
+        .share-menu ul li .icon {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            font-size: 16px;
+            color: white;
+        }
+
+        .icon.instagram {
+            background-color: #e4405f;
+        }
+
+        .icon.telegram {
+            background-color: #0088cc;
+        }
+
+        .icon.facebook {
+            background-color: #4267B2;
+        }
+        
+        .slider-container1 {
+            color: #000;
+            width: 100%;
+            max-width: 800px;
+            margin: 50px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slider1 {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .slide1 {
+            width: 100%;
+            flex-shrink: 0;
+            height: 500px;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .slide1 img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .car-name {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.7);
+            color: rgb(0, 0, 0);
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .prev_1, .next_1 {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #ffffff;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .prev_1 {
+            left: 10px;
+        }
+
+        .next_1 {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="https://koleso.ru/articles/wp-content/uploads/2023/01/3-2.jpg  " alt="Lexus Logo">
+        <h1>Lexus - Жапондық сапа</h1>
+    </header>
+
+    <nav>
+        
+        <button class="menu-button" onclick="openSidebar()">☰ Меню</button>
+        <div id="mySidebar" class="sidebar">
+            <a href="javascript:void(0)" class="close-btn" onclick="closeSidebar()">×</a>
+            <a href="https://kk.wikipedia.org/wiki/Lexus">Біз туралы</a>
+            <a href="https://ru.lexuskz.com/buy-and-offers/offers">Акциялар</a>
+            <a href="https://kz.lexuskz.com/owners/warranty/lexus-relax">Жиі қойылатын сұрақтар</a>
+            <a href="https://www.drom.ru/reviews/lexus/">Пікірлер</a>
+            <a href="https://lexus-almaty.kz/">Байланыс</a>
+            <a href="https://kz.lexuskz.com/used-cars/lexus-select">Сатылымдар</a>
+        </div>
+
+        <script>
+            function openSidebar() {
+                document.getElementById("mySidebar").style.width = "250px";
+            }
+    
+            function closeSidebar() {
+                document.getElementById("mySidebar").style.width = "0";
+            }
+        </script>
+        
+        <div>
+            <a href="#">Басты бет</a>
+            <a href="#about">Lexus туралы</a>
+            <a href="#models">Модельдер</a>
+            <a href="#map">Карта</a>
+            <a href="#sales">Сатылымдар</a>
+            <div class="dropdown">
+            <a href="#kategoria">Категориялары</a>
+            <div class="dropdown-content">
+                <a href="#kategoria">Non-Hybrid</a>
+                <a href="#kategoria">Hybrid</a>
+                <a href="#kategoria">Plug-in Hybrid</a>
+            </div>
+        </div>
+    </nav>
+    
+
+        <script>
+
+            function openSidebar() {
+                document.getElementById("mySidebar").style.width = "250px";
+                document.body.classList.add("active");
+            }
+
+            function closeSidebar() {
+                document.getElementById("mySidebar").style.width = "0";
+                document.body.classList.remove("active");
+            }
+
+            document.body.addEventListener("click", function(event) {
+                var sidebar = document.getElementById("mySidebar");
+                var menuButton = document.querySelector(".menu-button");
+                if (!sidebar.contains(event.target) && !menuButton.contains(event.target)) {
+                    closeSidebar();
+                }
+            });
+        </script>
+    
+        <div class="share-button">&#x1f517;</div>
+        <div class="share-menu">
+            <ul>
+                <li onclick="window.open('https://instagram.com', '_blank')">
+                    <span class="icon instagram">I</span> Instagram
+                </li>
+                <li onclick="window.open('https://telegram.org', '_blank')">
+                    <span class="icon telegram">T</span> Telegram
+                </li>
+                <li onclick="window.open('https://facebook.com', '_blank')">
+                    <span class="icon facebook">F</span> Facebook
+                </li>
+            </ul>
+        </div>
+
+        <script>
+            const shareButton = document.querySelector('.share-button');
+            const shareMenu = document.querySelector('.share-menu');
+    
+            shareButton.addEventListener('click', () => {
+                shareMenu.style.display =
+                    shareMenu.style.display === 'block' ? 'none' : 'block';
+            });
+        </script>
+
+    <div class="hero">
+        <h1>Lexus әлеміне қош келдіңіз!</h1>
+        <p>Сіздің армандағы көлігіңіз - бізде!</p>
+        <a href="#models" style="color: #f0c040; text-decoration: underline;">Модельдерді қарау</a>
+    </div>
+
+    <section id="about">
+        <h2 style="text-align: center; margin: 20px 0;">Lexus туралы</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto;">Lexus - бұл тек көлік емес, бұл сапа, стиль және сенімділік. Жапонияның үздік инженерлері жасаған көліктер әлемдік нарықта өз беделін дәлелдеді.</p>
+    </section>
+
+    <section id="models">
+        <h2 style="text-align: center; margin: 20px 0;">Модельдер</h2>
+        <div class="categories">
+            <div class="category">
+                <img src="https://discoverlexus.com/_nuxt/assets/shot2-1-afd517.jpeg" alt="Model 1" >
+                <h3>Lexus RC F</h3>
+                <p>Жылдамдық пен стиль үйлесімі.</p>
+            </div>
+            <div class="category">
+                <img src="https://leasing.ru/storagefile/leasingru/68c00513-a0b9-4b61-9e99-8d3d26ba4df0" alt="Model 2">
+                <h3>Lexus ES</h3>
+                <p>Комфорт пен люкс таңдауы.</p>
+            </div>
+            <div class="category">
+                <img src="https://images.drive.ru/i/0/5d405a0aec05c4645f000015.jpg" alt="Model 3">
+                <h3>Lexus LX</h3>
+                <p>Күш пен сенімділік белгісі.</p>
+            </div>
+        </div>
+            
+        <div class="slider-container1">
+            <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+            <div class="slider1">
+                <div class="slide1"><img src="https://quto.ru/thumb/1720x0/filters:quality(75):no_upscale()/service-imgs/63/7c/e8/cf/637ce8cfa2944.jpeg" alt="IS"></div>
+                <div class="slide1"><img src="https://quto.ru/thumb/1720x0/filters:quality(75):no_upscale()/service-imgs/61/09/25/19/6109251955981.jpeg" alt="Image 2"></div>
+                <div class="slide1"><img src="https://quto.ru/thumb/1720x0/filters:quality(75):no_upscale()/service-imgs/60/86/8e/00/60868e001e936.jpeg" alt="Image 3"></div>
+                <div class="slide1"><img src="https://quto.ru/thumb/1720x0/filters:quality(75):no_upscale()/service-imgs/65/16/8c/d6/65168cd696e7a.jpeg" alt="Image 3"></div>
+                <div class="slide1"><img src="https://quto.ru/thumb/1720x0/filters:quality(75):no_upscale()/service-imgs/62/97/63/72/62976372ab206.jpeg" alt="Image 3"></div>:
+
+            </div>
+            <button class="prev_1" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="next_1" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+    
+        <script>
+            let currentIndex = 0;
+
+        function moveSlide(direction) {
+            const slides = document.querySelector('.slider1');
+            const totalSlides = document.querySelectorAll('.slide1').length;
+
+            // Индекс жаңарту
+            currentIndex = (currentIndex + direction + totalSlides) % totalSlides;
+
+            // Слайдты жылжыту
+            slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+        </script>
+
+        <section id="kategoria" >
+        <div class="a">
+            <h2>Lexus көліктері негізінен үш негізгі категорияға бөлінеді</h2>
+            
+            <div class="b">
+                <img src="https://dvizhok.su/i/files2/auto/2020/04/Lexus_LC500_2021_1.jpg" alt="SU">
+                <div class="c">
+                    <h3>Non-Hybrid</h3>
+                    <p>Бұл категориядағы модельдер классикалық бензинді немесе дизельді қозғалтқышпен жабдықталған. Осы категориядағы Lexus көліктері тек ішкі жану қозғалтқышы арқылы жұмыс істейді және экологиялық таза емес, бірақ жоғары қуат пен өнімділікті ұсынады.</p>
+                </div>
+            </div>
+            
+            <div class="b">
+                <img src="https://hips.hearstapps.com/hmg-prod/images/2023-lexus-rx-500h-288-647601e140585.jpg?crop=0.583xw:0.436xh;0.274xw,0.487xh&resize=1200:*" alt="KazNU">
+                <div class="c">
+                    <h3>Hybrid</h3>
+                    <p>Жоғарыда айтылғандай, Lexus-тың гибридті модельдері электр және бензин қозғалтқыштарының комбинациясын пайдаланады, бұл көлікке жанармай үнемділігі мен төмен қоршаған ортаға зиянды шығарындыларды ұсынады.</p>
+                </div>
+            </div>
+            
+            <div class="b">
+                <img src="https://cdn.hevcars.com.ua/wp-content/uploads/2021/06/lexus-nx-450h-plus-exterior-hevcars-12.jpg" alt="ATU">
+                <div class="c">
+                    <h3>Plug-in Hybrid</h3>
+                    <p>Плагин-гибридті модельдер сыртқы қуат көзінен зарядталатын үлкен аккумуляторларға ие, бұл көліктің ұзақ уақыт бойы тек электрмен жұмыс істеуіне мүмкіндік береді. Олар бензин қозғалтқышын да пайдалана алады, бірақ толық зарядталған күйде көлік тек электрмен жұмыс істейді.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+        </div>
+    </section>
+
+    <section id="map">
+        <h2 style="text-align: center; margin: 20px 0;">Біздің Орналасқан Жеріміз</h2>
+        <div class="map-container">
+            <iframe
+            src="https://www.google.kz/maps/embed?pb=!1m18!1m12!1m3!1d11915.634752173786!2d76.90807749873083!3d43.2201870004566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38836f36a2ed23d1%3A0xb5f351f1d0d8674b!2z0JrQvtGA0LjQutCwINCQ0LXRgNCw0LnQu9GM!5e0!3m2!1skk!2skz!4v1690384065537!5m2!1skk!2skz"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </section>
+
+    <section id="sales">
+        <h2 style="text-align: center; margin: 20px 0;">Сатылымдар</h2>
+        <p style="text-align: center;">Lexus көліктерін қараңыз және сатып алыңыз: <a href="https://kolesa.kz/cars/lexus/" style="color: #f0c040;">Kolesa.kz</a></p>
+    </section>
+
+</section>
+<!-- Loading Progress Bar -->
+<div class="loading-bar">
+  <div class="bar bar-1"></div>
+  <div class="bar bar-2"></div>
+  <div class="bar bar-3"></div>
+  <div class="bar bar-4"></div>
+  <div class="bar bar-5"></div>
+</div>
+
+<script>
+    // Hamburger Menu Toggle
+    document.getElementById('toggleSidebar').addEventListener('click', function() {
+        document.getElementById('sidebar').classList.add('open');
+    });
+
+    // Close Sidebar
+    document.getElementById('closeSidebar').addEventListener('click', function() {
+        document.getElementById('sidebar').classList.remove('open');
+    });
+
+    // Toggle Accessories Menu on Click
+    document.getElementById('accessories').addEventListener('click', function() {
+        var menu = document.getElementById('accessoriesMenu');
+        menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Toggle Accessories Dropdown in Header
+    document.getElementById('accessoriesHeader').addEventListener('click', function() {
+        var menu = document.getElementById('accessoriesHeaderMenu');
+        menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    });
+</script>
+
+<script>
+    // Hamburger Menu Toggle
+    document.getElementById('toggleSidebar').addEventListener('click', function() {
+        document.getElementById('sidebar').classList.add('open');
+    });
+
+    // Close Sidebar
+    document.getElementById('closeSidebar').addEventListener('click', function() {
+        document.getElementById('sidebar').classList.remove('open');
+    });
+
+    // Toggle Accessories Menu on Click
+    document.getElementById('accessories').addEventListener('click', function() {
+        var menu = document.getElementById('accessoriesMenu');
+        menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Toggle Accessories Dropdown in Header
+    document.getElementById('accessoriesHeader').addEventListener('click', function() {
+        var menu = document.getElementById('accessoriesHeaderMenu');
+        menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    });
+</script>
+
+
+    <footer>
+        <div>Lexus автокөлігі туралы ақпараттар мен жаңалықтар</div>
+        <div class="footer-links">
+            <div>
+                <h4>Біз туралы</h4>
+                <p>Lexus автокөлігі туралы біле аласыз!</p>
+            </div>
+            <div>
+                <h4>Маркалар</h4>
+                <p>Маркаларды қайдан көруге болады?</p>
+            </div>
+            <div>
+                <h4>Сатылым</h4>
+                <p>Сатылымдағы автокөліктерді қайдан көруге болады?</p>
+            </div>
+        </div>
+        <div>
+            <h4>Барлық ақпарат:</h4>
+            <a href="https://lexus-almaty.kz/?utm_source=google_ads&utm_medium=poisk&utm_campaign=lexus_obshie_zaprosy&utm_content=cid|12428280463|gid|119598934698|kwid|kwd-307755143410&utm_term=%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%20lexus&gad_source=1&gclid=EAIaIQobChMIytjHkN2diQMVX1SRBR3H_gUiEAAYASAAEgICS_D_BwE"> 
+            <p color="ebebeb"> Lexus.ru</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>

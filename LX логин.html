@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="madi.css">
+    <title>Lexus Тіркеу Формасы</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #ffffff;
+        }
+
+        .registration-form {
+            background-color: rgba(0, 0, 0, 7)
+            color: #000;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+        }
+
+        .registration-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #333;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+            outline: none;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 12px;
+            background-color: #ffffff;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-group button:hover {
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop style="
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;">
+    <source src="C:\Users\konil\Downloads\2024 December to Remember_ Letter _ Lexus.mp4" type="video/mp4">
+</video>
+    <div class="registration-form">
+        <h2>Кіру</h2>
+        <form action="C:\Users\konil\Desktop\VS code\HTML\LX сайт.html" method="GET">
+            <div class="form-group">
+                <label for="name">Аты-жөні:</label>
+                <input type="text" id="name" name="name" placeholder="Аты-жөніңізді енгізіңіз" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Email адресіңізді енгізіңіз" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Телефон нөмірі:</label>
+                <input type="tel" id="phone" name="phone" placeholder="+7 (XXX) XXX-XX-XX" required>
+            </div>
+            <div class="form-group">
+                <label for="model">Lexus моделі:</label>
+                <select id="model" name="model" required>
+                    <option value="" disabled selected>Модельді таңдаңыз</option>
+                    <option value="RX">Lexus RX</option>
+                    <option value="NX">Lexus NX</option>
+                    <option value="GX">Lexus GX</option>
+                    <option value="LX">Lexus LX</option>
+                    <option value="LX">Lexus ES</option>
+                </select>
+            </div>
+
+            <div>
+
+
+                <div class="intro__content">
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <button type="submit">Кіру</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
